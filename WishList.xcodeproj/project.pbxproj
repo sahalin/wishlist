@@ -17,7 +17,7 @@
 		11A1CA892833B2480087C43B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A1CA872833B2480087C43B /* LaunchScreen.storyboard */; };
 		11A1CA982833B3E10087C43B /* offerings.json in Resources */ = {isa = PBXBuildFile; fileRef = 11A1CA972833B3E10087C43B /* offerings.json */; };
 		11A1CA9B2833B6D80087C43B /* AppContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CA9A2833B6D80087C43B /* AppContainerVC.swift */; };
-		11A1CA9D2833B7010087C43B /* AttractionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CA9C2833B7010087C43B /* AttractionsVC.swift */; };
+		11A1CA9D2833B7010087C43B /* OfferingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CA9C2833B7010087C43B /* OfferingsVC.swift */; };
 		11A1CA9F2833B72B0087C43B /* WishListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CA9E2833B72B0087C43B /* WishListVC.swift */; };
 		11A1CAA12833B77E0087C43B /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CAA02833B77E0087C43B /* AppEnvironment.swift */; };
 		11A1CAA42833B83E0087C43B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CAA32833B83E0087C43B /* Colors.swift */; };
@@ -49,7 +49,7 @@
 		11A1CA972833B3E10087C43B /* offerings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = offerings.json; sourceTree = "<group>"; };
 		11A1CA992833B3F30087C43B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		11A1CA9A2833B6D80087C43B /* AppContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerVC.swift; sourceTree = "<group>"; };
-		11A1CA9C2833B7010087C43B /* AttractionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionsVC.swift; sourceTree = "<group>"; };
+		11A1CA9C2833B7010087C43B /* OfferingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferingsVC.swift; sourceTree = "<group>"; };
 		11A1CA9E2833B72B0087C43B /* WishListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListVC.swift; sourceTree = "<group>"; };
 		11A1CAA02833B77E0087C43B /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		11A1CAA32833B83E0087C43B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -96,12 +96,12 @@
 			path = AppContainer;
 			sourceTree = "<group>";
 		};
-		119E15B3283514140034C904 /* Attractions */ = {
+		119E15B3283514140034C904 /* Offerings */ = {
 			isa = PBXGroup;
 			children = (
-				11A1CA9C2833B7010087C43B /* AttractionsVC.swift */,
+				11A1CA9C2833B7010087C43B /* OfferingsVC.swift */,
 			);
-			path = Attractions;
+			path = Offerings;
 			sourceTree = "<group>";
 		};
 		119E15B4283514210034C904 /* WishList */ = {
@@ -155,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				119E15B22835140C0034C904 /* AppContainer */,
-				119E15B3283514140034C904 /* Attractions */,
+				119E15B3283514140034C904 /* Offerings */,
 				119E15B4283514210034C904 /* WishList */,
 			);
 			path = ViewControllers;
@@ -301,7 +301,7 @@
 				119E15B128350EAF0034C904 /* OfferingView+IconLabel.swift in Sources */,
 				11A1CAB72834972B0087C43B /* NetworkManager.swift in Sources */,
 				11A1CA7F2833B2470087C43B /* SceneDelegate.swift in Sources */,
-				11A1CA9D2833B7010087C43B /* AttractionsVC.swift in Sources */,
+				11A1CA9D2833B7010087C43B /* OfferingsVC.swift in Sources */,
 				11A1CAA12833B77E0087C43B /* AppEnvironment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

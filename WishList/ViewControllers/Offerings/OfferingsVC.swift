@@ -1,5 +1,5 @@
 // 
-//  AttractionsVC.swift
+//  OfferingsVC.swift
 //  WishList
 //
 //  Created by Alexander on 17.05.2022.
@@ -7,7 +7,7 @@
     
 import UIKit
 
-class AttractionsVC: WLViewController {
+class OfferingsVC: WLViewController {
     let env: AppEnvironment
     
     var collectionView: UICollectionView!
@@ -41,7 +41,7 @@ class AttractionsVC: WLViewController {
 
 // MARK: - Data
 
-extension AttractionsVC {
+extension OfferingsVC {
     enum Section: String {
         case main
     }
@@ -59,7 +59,7 @@ extension AttractionsVC {
 
 // MARK: - Reload
 
-extension AttractionsVC {
+extension OfferingsVC {
     func reload() {
         Task(priority: .userInitiated) {
             let snapshot = try! await loadData()
@@ -71,7 +71,7 @@ extension AttractionsVC {
 
 // MARK: - UICollectionView
 
-extension AttractionsVC: UICollectionViewDelegate {
+extension OfferingsVC: UICollectionViewDelegate {
     func configureLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (section, env) in
             var config = UICollectionLayoutListConfiguration(appearance: .plain)
