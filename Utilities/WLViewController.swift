@@ -8,7 +8,7 @@
 import UIKit
 
 class WLViewController: UIViewController {
-    public init() {
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     

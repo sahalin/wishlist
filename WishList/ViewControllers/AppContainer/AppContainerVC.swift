@@ -10,8 +10,9 @@ import UIKit
 class AppContainerVC: UITabBarController {
     let env: AppEnvironment
     
-    var OfferingsVC: OfferingsVC!
-    var wishListVC: WishListVC!
+    var venuesVC: OfferingsVC!
+    var exhibitionsVC: OfferingsVC!
+    var wishListVC: OfferingsVC!
     
     init(env: AppEnvironment) {
         self.env = env
@@ -25,11 +26,13 @@ class AppContainerVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        OfferingsVC = OfferingsVC(env: env)
-        wishListVC = WishListVC(env: env)
+        venuesVC = OfferingsVC(env: env, config: .venues)
+        exhibitionsVC = OfferingsVC(env: env, config: .exhibitions)
+        wishListVC = OfferingsVC(env: env, config: .wishList)
         
         viewControllers = [
-            UINavigationController(rootViewController: OfferingsVC),
+            UINavigationController(rootViewController: venuesVC),
+            UINavigationController(rootViewController: exhibitionsVC),
             UINavigationController(rootViewController: wishListVC),
         ]
         
@@ -47,7 +50,8 @@ extension AppContainerVC {
         tabBar.standardAppearance = .standard()
         tabBar.scrollEdgeAppearance = .scrollEdge()
         
-        OfferingsVC.tabBarItem = .init(title: Strings.attractionsTitle, image: .tabBarAttractions(), selectedImage: .tabBarAttractionsSelected())
+        venuesVC.tabBarItem = .init(title: Strings.venuesTitle, image: .tabBarVenues(), selectedImage: .tabBarVenuesSelected())
+        exhibitionsVC.tabBarItem = .init(title: Strings.exhibitionsTitle, image: .tabBarExhibitions(), selectedImage: .tabBarExhibitionsSelected())
         wishListVC.tabBarItem = .init(title: Strings.wishListTitle, image: .tabBarWishList(), selectedImage: .tabBarWishListSelected())
     }
 }

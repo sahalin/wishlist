@@ -19,12 +19,20 @@ extension TextAttributes {
 // MARK: Tab bar
 
 extension UIImage {
-    static func tabBarAttractions() -> UIImage {
+    static func tabBarVenues() -> UIImage {
         .systemSFSymbol("map")
     }
     
-    static func tabBarAttractionsSelected() -> UIImage {
+    static func tabBarVenuesSelected() -> UIImage {
         .systemSFSymbol("map.fill", color: Colors.tint)
+    }
+    
+    static func tabBarExhibitions() -> UIImage {
+        .systemSFSymbol("photo.artframe")
+    }
+    
+    static func tabBarExhibitionsSelected() -> UIImage {
+        .systemSFSymbol("photo.artframe", color: Colors.tint)
     }
     
     static func tabBarWishList() -> UIImage {

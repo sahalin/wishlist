@@ -18,7 +18,6 @@
 		11A1CA982833B3E10087C43B /* offerings.json in Resources */ = {isa = PBXBuildFile; fileRef = 11A1CA972833B3E10087C43B /* offerings.json */; };
 		11A1CA9B2833B6D80087C43B /* AppContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CA9A2833B6D80087C43B /* AppContainerVC.swift */; };
 		11A1CA9D2833B7010087C43B /* OfferingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CA9C2833B7010087C43B /* OfferingsVC.swift */; };
-		11A1CA9F2833B72B0087C43B /* WishListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CA9E2833B72B0087C43B /* WishListVC.swift */; };
 		11A1CAA12833B77E0087C43B /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CAA02833B77E0087C43B /* AppEnvironment.swift */; };
 		11A1CAA42833B83E0087C43B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CAA32833B83E0087C43B /* Colors.swift */; };
 		11A1CAA62833B8420087C43B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CAA52833B8420087C43B /* Theme.swift */; };
@@ -50,7 +49,6 @@
 		11A1CA992833B3F30087C43B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		11A1CA9A2833B6D80087C43B /* AppContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerVC.swift; sourceTree = "<group>"; };
 		11A1CA9C2833B7010087C43B /* OfferingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferingsVC.swift; sourceTree = "<group>"; };
-		11A1CA9E2833B72B0087C43B /* WishListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListVC.swift; sourceTree = "<group>"; };
 		11A1CAA02833B77E0087C43B /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		11A1CAA32833B83E0087C43B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		11A1CAA52833B8420087C43B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -104,12 +102,12 @@
 			path = Offerings;
 			sourceTree = "<group>";
 		};
-		119E15B4283514210034C904 /* WishList */ = {
+		119E15BD283553F40034C904 /* SampleData */ = {
 			isa = PBXGroup;
 			children = (
-				11A1CA9E2833B72B0087C43B /* WishListVC.swift */,
+				11A1CA972833B3E10087C43B /* offerings.json */,
 			);
-			path = WishList;
+			path = SampleData;
 			sourceTree = "<group>";
 		};
 		11A1CA702833B2470087C43B = {
@@ -156,7 +154,6 @@
 			children = (
 				119E15B22835140C0034C904 /* AppContainer */,
 				119E15B3283514140034C904 /* Offerings */,
-				119E15B4283514210034C904 /* WishList */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -164,7 +161,7 @@
 		11A1CA942833B3B10087C43B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				11A1CA972833B3E10087C43B /* offerings.json */,
+				119E15BD283553F40034C904 /* SampleData */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -181,14 +178,14 @@
 		11A1CAA82833BCB30087C43B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				119E15AB283506600034C904 /* NSAttributedString+Additions.swift */,
+				11A1CAC52834FD120087C43B /* NSLayoutConstraint+Additions.swift */,
+				119E15B528353F3E0034C904 /* UIButton+Additions.swift */,
 				11A1CAC12834E99F0087C43B /* UIFont+Additions.swift */,
 				11A1CAAD2833C10A0087C43B /* UIImage+Additions.swift */,
 				11A1CABF2834C4D80087C43B /* WLCustomViewListCell.swift */,
 				11A1CABD2834BE600087C43B /* WLView.swift */,
 				11A1CAA92833BCD10087C43B /* WLViewController.swift */,
-				11A1CAC52834FD120087C43B /* NSLayoutConstraint+Additions.swift */,
-				119E15AB283506600034C904 /* NSAttributedString+Additions.swift */,
-				119E15B528353F3E0034C904 /* UIButton+Additions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -282,7 +279,6 @@
 			files = (
 				11A1CAAE2833C10A0087C43B /* UIImage+Additions.swift in Sources */,
 				11A1CAB1283492A70087C43B /* Offering.swift in Sources */,
-				11A1CA9F2833B72B0087C43B /* WishListVC.swift in Sources */,
 				119E15AC283506600034C904 /* NSAttributedString+Additions.swift in Sources */,
 				11A1CAC62834FD120087C43B /* NSLayoutConstraint+Additions.swift in Sources */,
 				119E15AF28350EA50034C904 /* OfferingView+Theme.swift in Sources */,

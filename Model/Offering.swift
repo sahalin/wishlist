@@ -43,7 +43,7 @@ extension Offering {
     
     var formattedStarRating: String? {
         guard let starsRating = starsRating else { return nil }
-        return Self.numberFormatter.string(from: NSNumber(value: starsRating))
+        return Self.starsFormatter.string(from: NSNumber(value: starsRating))
     }
     
     var formattedDateInterval: String? {
@@ -54,6 +54,13 @@ extension Offering {
     // MARK: Formatters
     
     private static var numberFormatter: NumberFormatter = {
+        let f = NumberFormatter()
+        f.numberStyle = .decimal
+        f.decimalSeparator = "."
+        return f
+    }()
+    
+    private static var starsFormatter: NumberFormatter = {
         let f = NumberFormatter()
         f.numberStyle = .decimal
         f.minimumFractionDigits = 1

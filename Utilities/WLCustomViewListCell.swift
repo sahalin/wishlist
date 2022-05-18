@@ -10,7 +10,7 @@ import UIKit
 final class WLCustomViewListCell<View: UIView>: UICollectionViewListCell {
     var customView: View!
     
-    /// Making unavailable as the cell is initialized during deque by the collection view.
+    /// Making unavailable as the cell is initialized during dequeue by the collection view.
     @available(*, unavailable)
     override init(frame: CGRect) {
         super.init(frame: .zero)

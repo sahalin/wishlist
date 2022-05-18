@@ -94,7 +94,7 @@ class OfferingView: WLView {
         // Location
         if let location = offering.location {
             locationLabel.isHidden = false
-            locationLabel.reload(icon: theme.locationIcon, attributedText: location.attributed(with: theme.detailTextAttributes))
+            locationLabel.reload(icon: theme.locationIcon, text: location)
         } else {
             locationLabel.isHidden = true
         }
@@ -102,7 +102,7 @@ class OfferingView: WLView {
         // Date
         if let date = offering.formattedDateInterval {
             dateLabel.isHidden = false
-            dateLabel.reload(icon: theme.dateIcon, attributedText: date.attributed(with: theme.detailTextAttributes))
+            dateLabel.reload(icon: theme.dateIcon, text: date)
         } else {
             dateLabel.isHidden = true
         }
@@ -110,12 +110,12 @@ class OfferingView: WLView {
         // Stars
         if let stars = offering.formattedStarRating {
             starsLabel.isHidden = false
-            starsLabel.reload(icon: theme.starsIcon, attributedText: stars.attributed(with: theme.detailTextAttributes))
+            starsLabel.reload(icon: theme.starsIcon, text: stars)
         } else {
             starsLabel.isHidden = true
         }
         
         // Price
-        priceLabel.reload(icon: theme.priceIcon, attributedText: offering.formattedPrice.attributed(with: theme.detailTextAttributes))
+        priceLabel.reload(icon: theme.priceIcon, text: offering.formattedPrice)
     }
 }

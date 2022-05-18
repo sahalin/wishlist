@@ -8,20 +8,37 @@
 import UIKit
 
 class OfferingsVC: WLViewController {
+    enum Config {
+        case venues
+        case exhibitions
+        case wishList
+    }
+    
     let env: AppEnvironment
+    let config: Config
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Offering>!
     
-    init(env: AppEnvironment) {
+    init(env: AppEnvironment, config: Config) {
         self.env = env
+        self.config = config
         super.init()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = Strings.attractionsTitle
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        switch config {
+        case .venues:
+            navigationItem.title = Strings.venuesTitle
+        case .exhibitions:
+            navigationItem.title = Strings.exhibitionsTitle
+        case .wishList:
+            navigationItem.title = Strings.wishListTitle
+        }
         
         collectionView = .init(frame: .zero, collectionViewLayout: configureLayout())
         dataSource = configureDataSource()
@@ -47,7 +64,22 @@ extension OfferingsVC {
     }
     
     func loadData() async throws -> NSDiffableDataSourceSnapshot<Section, Offering> {
-        let offerings = try await env.networkManager.fetchOfferings()
+        var offerings = try await env.networkManager.fetchOfferings()
+        
+        switch config {
+        case .venues:
+            offerings = offerings
+                .filter({ $0.type == .venue })
+                .sorted(by: { $0.name < $1.name })
+            
+        case .exhibitions:
+            offerings = offerings
+                .filter({ $0.type == .exhibition })
+                .sorted(by: { $0.startDate! < $1.startDate! })
+            
+        case .wishList:
+            offerings = []
+        }
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, Offering>()
         snapshot.appendSections([.main])
@@ -96,24 +128,6 @@ extension OfferingsVC: UICollectionViewDelegate {
     }
     
     // MARK: Cells
-    
-    func configureVenueCell() -> UICollectionView.CellRegistration<UICollectionViewListCell, Offering> {
-        UICollectionView.CellRegistration<UICollectionViewListCell, Offering> { (cell, indexPath, offering) in
-            var content: UIListContentConfiguration = .cell()
-            content.text = offering.name
-            
-            cell.contentConfiguration = content
-        }
-    }
-    
-    func configureExhibitionCell() -> UICollectionView.CellRegistration<UICollectionViewListCell, Offering> {
-        UICollectionView.CellRegistration<UICollectionViewListCell, Offering> { (cell, indexPath, offering) in
-            var content: UIListContentConfiguration = .cell()
-            content.text = offering.name
-            
-            cell.contentConfiguration = content
-        }
-    }
     
     func configureOfferingCell() -> UICollectionView.CellRegistration<WLCustomViewListCell<OfferingView>, Offering> {
         UICollectionView.CellRegistration<WLCustomViewListCell<OfferingView>, Offering> { (cell, indexPath, offering) in

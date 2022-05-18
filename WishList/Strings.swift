@@ -8,7 +8,8 @@
 import Foundation
 
 struct Strings {
-    static let attractionsTitle: String = "Attractions"
+    static let venuesTitle: String = "Venues"
+    static let exhibitionsTitle: String = "Exhibitions"
     static let wishListTitle: String = "Wish List"
     static let addToWishList: String = "Add to Wish List"
     static let addedToWishList: String = "Added to Wish List"

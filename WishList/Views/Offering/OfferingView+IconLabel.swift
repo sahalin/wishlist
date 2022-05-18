@@ -55,9 +55,9 @@ extension OfferingView {
             spacingConstraint.constant = UIFontMetrics(forTextStyle: theme.detailIconTextStyle).scaledValue(for: theme.detailIconSpacing, compatibleWith: traitCollection)
         }
         
-        func reload(icon: UIImage, attributedText: NSAttributedString) {
+        func reload(icon: UIImage, text: String) {
             imageView.image = icon
-            label.attributedText = attributedText
+            label.attributedText = text.attributed(with: theme.detailTextAttributes)
             spacingConstraint.constant = theme.detailIconSpacing
         }
     }
