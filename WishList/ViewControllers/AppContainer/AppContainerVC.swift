@@ -47,8 +47,8 @@ extension AppContainerVC {
         tabBar.standardAppearance = .standard()
         tabBar.scrollEdgeAppearance = .scrollEdge()
         
-        attractionsVC.tabBarItem = .init(title: Strings.attractionsTitle, image: .systemSFSymbol("circle"), selectedImage: .systemSFSymbol("circle.fill", color: Colors.tint))
-        wishListVC.tabBarItem = .init(title: Strings.wishListTitle, image: .systemSFSymbol("circle"), selectedImage: .systemSFSymbol("circle.fill", color: Colors.tint))
+        attractionsVC.tabBarItem = .init(title: Strings.attractionsTitle, image: .tabBarAttractions(), selectedImage: .tabBarAttractionsSelected())
+        wishListVC.tabBarItem = .init(title: Strings.wishListTitle, image: .tabBarWishList(), selectedImage: .tabBarWishListSelected())
     }
 }
 

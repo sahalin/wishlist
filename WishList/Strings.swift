@@ -10,4 +10,6 @@ import Foundation
 struct Strings {
     static let attractionsTitle: String = "Attractions"
     static let wishListTitle: String = "Wish List"
+    static let addToWishList: String = "Add to Wish List"
+    static let addedToWishList: String = "Added to Wish List"
 }

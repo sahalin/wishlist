@@ -16,4 +16,23 @@ class WLViewController: UIViewController {
     required init?(coder: NSCoder) {
         preconditionFailure()
     }
+    
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            colorThemeDidChange()
+        }
+        if traitCollection.preferredContentSizeCategory != previousTraitCollection?.preferredContentSizeCategory {
+            contentSizeDidChange()
+        }
+    }
+    
+    func colorThemeDidChange() {
+        
+    }
+    
+    func contentSizeDidChange() {
+        
+    }
 }

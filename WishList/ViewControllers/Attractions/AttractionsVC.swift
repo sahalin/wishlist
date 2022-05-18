@@ -83,20 +83,19 @@ extension AttractionsVC: UICollectionViewDelegate {
     }
     
     func configureDataSource() -> UICollectionViewDiffableDataSource<Section, Offering> {
-        let venueCell = configureVenueCell()
-        let exhibitionCell = configureExhibitionCell()
+        let offeringCell = configureOfferingCell()
         
         let ds = UICollectionViewDiffableDataSource<Section, Offering>(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
             switch item.type {
-            case .venue:
-                return collectionView.dequeueConfiguredReusableCell(using: venueCell, for: indexPath, item: item)
-            case .exhibition:
-                return collectionView.dequeueConfiguredReusableCell(using: exhibitionCell, for: indexPath, item: item)
+            case .venue, .exhibition:
+                return collectionView.dequeueConfiguredReusableCell(using: offeringCell, for: indexPath, item: item)
             }
         }
         
         return ds
     }
+    
+    // MARK: Cells
     
     func configureVenueCell() -> UICollectionView.CellRegistration<UICollectionViewListCell, Offering> {
         UICollectionView.CellRegistration<UICollectionViewListCell, Offering> { (cell, indexPath, offering) in
@@ -113,6 +112,13 @@ extension AttractionsVC: UICollectionViewDelegate {
             content.text = offering.name
             
             cell.contentConfiguration = content
+        }
+    }
+    
+    func configureOfferingCell() -> UICollectionView.CellRegistration<WLCustomViewListCell<OfferingView>, Offering> {
+        UICollectionView.CellRegistration<WLCustomViewListCell<OfferingView>, Offering> { (cell, indexPath, offering) in
+            cell.setCustomView({ .init(offering: offering) })
+            cell.customView.offering = offering
         }
     }
     

@@ -16,3 +16,7 @@ To comply with "don't over-engineer!" part of the assignment 😅 In a real proj
 ### Model layer
 
 All data is fetched with the `NetworkManager`, and wish list entries are persisted locally in the `Store`. 
+
+### Known issues
+
+* UILayer's `adjustsFontForContentSizeCategory` is bugged
