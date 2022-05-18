@@ -21,6 +21,9 @@
 		11A1CAAA2833BCD10087C43B /* WLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CAA92833BCD10087C43B /* WLViewController.swift */; };
 		11A1CAAC2833C0900087C43B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CAAB2833C0900087C43B /* Strings.swift */; };
 		11A1CAAE2833C10A0087C43B /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CAAD2833C10A0087C43B /* UIImage+Additions.swift */; };
+		11A1CAB1283492A70087C43B /* Offering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CAB0283492A70087C43B /* Offering.swift */; };
+		11A1CAB3283492C00087C43B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CAB2283492C00087C43B /* Store.swift */; };
+		11A1CAB72834972B0087C43B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CAB62834972B0087C43B /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,9 @@
 		11A1CAA92833BCD10087C43B /* WLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLViewController.swift; sourceTree = "<group>"; };
 		11A1CAAB2833C0900087C43B /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		11A1CAAD2833C10A0087C43B /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
+		11A1CAB0283492A70087C43B /* Offering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offering.swift; sourceTree = "<group>"; };
+		11A1CAB2283492C00087C43B /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		11A1CAB62834972B0087C43B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				11A1CA7B2833B2470087C43B /* WishList */,
-				11A1CA952833B3C60087C43B /* Model */,
-				11A1CA942833B3B10087C43B /* Resources */,
 				11A1CAA82833BCB30087C43B /* Utilities */,
 				11A1CA992833B3F30087C43B /* README.md */,
 				11A1CA7A2833B2470087C43B /* Products */,
@@ -78,6 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				11A1CA902833B26C0087C43B /* ViewControllers */,
+				11A1CA952833B3C60087C43B /* Model */,
+				11A1CAB4283496AE0087C43B /* Services */,
+				11A1CA942833B3B10087C43B /* Resources */,
 				11A1CAA02833B77E0087C43B /* AppEnvironment.swift */,
 				11A1CA7C2833B2470087C43B /* AppDelegate.swift */,
 				11A1CA7E2833B2470087C43B /* SceneDelegate.swift */,
@@ -127,8 +134,8 @@
 		11A1CA942833B3B10087C43B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				11A1CAA72833BC280087C43B /* Strings */,
-				11A1CA962833B3D20087C43B /* SampleData */,
+				11A1CAAB2833C0900087C43B /* Strings.swift */,
+				11A1CA972833B3E10087C43B /* offerings.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -136,24 +143,10 @@
 		11A1CA952833B3C60087C43B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				11A1CAB0283492A70087C43B /* Offering.swift */,
+				11A1CAB2283492C00087C43B /* Store.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		11A1CA962833B3D20087C43B /* SampleData */ = {
-			isa = PBXGroup;
-			children = (
-				11A1CA972833B3E10087C43B /* offerings.json */,
-			);
-			path = SampleData;
-			sourceTree = "<group>";
-		};
-		11A1CAA72833BC280087C43B /* Strings */ = {
-			isa = PBXGroup;
-			children = (
-				11A1CAAB2833C0900087C43B /* Strings.swift */,
-			);
-			path = Strings;
 			sourceTree = "<group>";
 		};
 		11A1CAA82833BCB30087C43B /* Utilities */ = {
@@ -163,6 +156,14 @@
 				11A1CAAD2833C10A0087C43B /* UIImage+Additions.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		11A1CAB4283496AE0087C43B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				11A1CAB62834972B0087C43B /* NetworkManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,13 +238,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				11A1CAAE2833C10A0087C43B /* UIImage+Additions.swift in Sources */,
+				11A1CAB1283492A70087C43B /* Offering.swift in Sources */,
 				11A1CA9F2833B72B0087C43B /* WishListVC.swift in Sources */,
 				11A1CAA62833B8420087C43B /* Theme.swift in Sources */,
 				11A1CAAC2833C0900087C43B /* Strings.swift in Sources */,
 				11A1CA7D2833B2470087C43B /* AppDelegate.swift in Sources */,
 				11A1CA9B2833B6D80087C43B /* AppContainerVC.swift in Sources */,
+				11A1CAB3283492C00087C43B /* Store.swift in Sources */,
 				11A1CAA42833B83E0087C43B /* Colors.swift in Sources */,
 				11A1CAAA2833BCD10087C43B /* WLViewController.swift in Sources */,
+				11A1CAB72834972B0087C43B /* NetworkManager.swift in Sources */,
 				11A1CA7F2833B2470087C43B /* SceneDelegate.swift in Sources */,
 				11A1CA9D2833B7010087C43B /* AttractionsVC.swift in Sources */,
 				11A1CAA12833B77E0087C43B /* AppEnvironment.swift in Sources */,

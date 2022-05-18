@@ -8,7 +8,10 @@
 import UIKit
 
 class AttractionsVC: WLViewController {
+    let env: AppEnvironment
+    
     init(env: AppEnvironment) {
+        self.env = env
         super.init()
     }
     
