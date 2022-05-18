@@ -13,7 +13,7 @@ class WLViewController: UIViewController {
     }
     
     @available(*, unavailable)
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         preconditionFailure()
     }
 }
