@@ -40,5 +40,6 @@ extension OfferingView {
         var addToWishListButtonIcon: UIImage = .systemSFSymbol("heart")
         var addedTowishListButtonIcon: UIImage = .systemSFSymbol("heart.fill")
         var wishListButtonIconSpacing: CGFloat = 4
+        var wishListButtonColor: UIColor = .systemPink
     }
 }

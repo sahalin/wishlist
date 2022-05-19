@@ -39,7 +39,7 @@ struct Offering: Hashable {
 
 extension Offering {
     var formattedPrice: String {
-        let currencyFormatter = Self.currencyFormatter
+        let currencyFormatter = Self.priceFormatter
         currencyFormatter.currencyCode = priceCurrencyCode
         guard let number = Self.numberFormatter.number(from: price) else { assertionFailure(); return "" }
         guard let price = currencyFormatter.string(from: number) else { assertionFailure(); return "" }
@@ -73,7 +73,7 @@ extension Offering {
         return f
     }()
     
-    private static var currencyFormatter: NumberFormatter = {
+    private static var priceFormatter: NumberFormatter = {
         let f = NumberFormatter()
         f.numberStyle = .currency
         return f

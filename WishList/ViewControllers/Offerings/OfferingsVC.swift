@@ -61,10 +61,10 @@ class OfferingsVC: WLViewController {
         }, for: .valueChanged)
         collectionView.refreshControl = refreshControl
         
-        reload()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(storeDidSave), name: .StoreDidSave, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        reload()
     }
 }
 

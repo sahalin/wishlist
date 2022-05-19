@@ -95,7 +95,7 @@ class OfferingView: WLView {
             }
             button.configuration = config
         }
-        wishListButton.tintColor = .systemPink
+        wishListButton.tintColor = theme.wishListButtonColor
         wishListButton.addAction(UIAction() { [unowned self] action in
             didTapWishListButtonHandler?(action.sender as! UIButton)
         }, for: .touchUpInside)
