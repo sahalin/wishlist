@@ -7,6 +7,8 @@
 
 import UIKit
 
+/// A shared subclass to remove common boilerplate.
+/// Since app does not use interface builder `required init?(coder: NSCoder)` and `init(nibName: nil, bundle: nil)` are made unavailable.
 class WLViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)

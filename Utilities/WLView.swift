@@ -7,6 +7,8 @@
 
 import UIKit
 
+/// A shared subclass to remove common boilerplate.
+/// Since app does not use interface builder `required init?(coder: NSCoder)` is made unavailable.
 class WLView: UIView {
     init() {
         super.init(frame: .zero)

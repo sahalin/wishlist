@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class NetworkManager {
-    let imageCache = NSCache<NSURL, UIImage>()
+    private let imageCache = NSCache<NSURL, UIImage>()
     
     func fetchOfferings() async throws -> [Offering] {
         let request = URLRequest(url: Bundle.main.url(forResource: "offerings", withExtension: "json")!)

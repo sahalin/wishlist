@@ -10,7 +10,6 @@
 		119E15AC283506600034C904 /* NSAttributedString+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E15AB283506600034C904 /* NSAttributedString+Additions.swift */; };
 		119E15AF28350EA50034C904 /* OfferingView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E15AE28350EA50034C904 /* OfferingView+Theme.swift */; };
 		119E15B128350EAF0034C904 /* OfferingView+IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E15B028350EAF0034C904 /* OfferingView+IconLabel.swift */; };
-		119E15B628353F3E0034C904 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E15B528353F3E0034C904 /* UIButton+Additions.swift */; };
 		119E15BF2835F45F0034C904 /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E15BE2835F45F0034C904 /* RuntimeError.swift */; };
 		11A1CA7D2833B2470087C43B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CA7C2833B2470087C43B /* AppDelegate.swift */; };
 		11A1CA7F2833B2470087C43B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A1CA7E2833B2470087C43B /* SceneDelegate.swift */; };
@@ -39,7 +38,6 @@
 		119E15AB283506600034C904 /* NSAttributedString+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Additions.swift"; sourceTree = "<group>"; };
 		119E15AE28350EA50034C904 /* OfferingView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OfferingView+Theme.swift"; sourceTree = "<group>"; };
 		119E15B028350EAF0034C904 /* OfferingView+IconLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OfferingView+IconLabel.swift"; sourceTree = "<group>"; };
-		119E15B528353F3E0034C904 /* UIButton+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
 		119E15BE2835F45F0034C904 /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
 		11A1CA792833B2470087C43B /* WishList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A1CA7C2833B2470087C43B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 				119E15AB283506600034C904 /* NSAttributedString+Additions.swift */,
 				11A1CAC52834FD120087C43B /* NSLayoutConstraint+Additions.swift */,
 				119E15BE2835F45F0034C904 /* RuntimeError.swift */,
-				119E15B528353F3E0034C904 /* UIButton+Additions.swift */,
 				11A1CAC12834E99F0087C43B /* UIFont+Additions.swift */,
 				11A1CAAD2833C10A0087C43B /* UIImage+Additions.swift */,
 				11A1CABF2834C4D80087C43B /* WLCustomViewListCell.swift */,
@@ -305,7 +302,6 @@
 				11A1CAA42833B83E0087C43B /* Colors.swift in Sources */,
 				11A1CAAA2833BCD10087C43B /* WLViewController.swift in Sources */,
 				11A1CABC2834BC290087C43B /* OfferingView.swift in Sources */,
-				119E15B628353F3E0034C904 /* UIButton+Additions.swift in Sources */,
 				119E15B128350EAF0034C904 /* OfferingView+IconLabel.swift in Sources */,
 				11A1CAB72834972B0087C43B /* NetworkManager.swift in Sources */,
 				11A1CA7F2833B2470087C43B /* SceneDelegate.swift in Sources */,
