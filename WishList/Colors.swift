@@ -8,7 +8,7 @@
 import UIKit
 
 struct Colors {
-    static var tint: UIColor { .systemMint }
+    static var tint: UIColor { .systemCyan }
     static var tintApp: UIColor { tint }
     static var tintAlerts: UIColor { tint }
     static var tintNavigation: UIColor { tint }

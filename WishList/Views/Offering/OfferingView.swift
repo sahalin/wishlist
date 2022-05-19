@@ -41,17 +41,6 @@ class OfferingView: WLView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            // To prevent conflicts with cell's `UIView-Encapsulated-Layout-Height` and hide debugger complains
-            heightAnchor.constraint(greaterThanOrEqualToConstant: theme.imageMinHeight).priority(.defaultHigh)
-        ])
-        
-        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
         contentStackView.axis = .vertical
         contentStackView.spacing = theme.contentSpacing
         contentStackView.directionalLayoutMargins = theme.contentMargins
@@ -68,8 +57,19 @@ class OfferingView: WLView {
         stackView.addArrangedSubview(imageViewContainer)
         stackView.addArrangedSubview(contentStackView)
         
-        imageViewContainer.widthAnchor.constraint(equalToConstant: theme.imageWidth).isActive = true
-        imageViewContainer.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageViewContainer.widthAnchor.constraint(equalToConstant: theme.imageWidth),
+            imageViewContainer.heightAnchor.constraint(equalTo: heightAnchor),
+            
+            // To prevent conflicts with cell's `UIView-Encapsulated-Layout-Height` and hide debugger complains
+            heightAnchor.constraint(greaterThanOrEqualToConstant: theme.imageMinHeight).priority(.defaultHigh),
+        ])
+        
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         // Configure subviews
         imageViewContainer.backgroundColor = .systemFill

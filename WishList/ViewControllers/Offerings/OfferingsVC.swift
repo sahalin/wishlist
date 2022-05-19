@@ -139,9 +139,9 @@ extension OfferingsVC: UICollectionViewDelegate {
     
     func configureOfferingCell() -> UICollectionView.CellRegistration<WLCustomViewListCell<OfferingView>, Offering> {
         UICollectionView.CellRegistration<WLCustomViewListCell<OfferingView>, Offering> { [unowned self] (cell, indexPath, offering) in
-            cell.setCustomView({
+            cell.setCustomView {
                 OfferingView(networkManager: env.networkManager)
-            })
+            }
             
             cell.customView.reload(offering: offering, inWishList: env.store.wishlist.contains(offering.uniqueID), didTapWishListButton: { [unowned self] button in
                 if !button.isSelected {
