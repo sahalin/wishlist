@@ -13,7 +13,7 @@ extension OfferingView {
         private let label = UILabel()
         
         private let reservedImageGuide = UILayoutGuide()
-        private var reservedImageWidth: NSLayoutConstraint!
+        private var reservedImageWidthConstraint: NSLayoutConstraint!
         private var spacingConstraint: NSLayoutConstraint!
         
         private let theme: Theme
@@ -34,7 +34,7 @@ extension OfferingView {
             
             NSLayoutConstraint.activate([
                 reservedImageGuide.leadingAnchor.constraint(equalTo: leadingAnchor),
-                reservedImageGuide.widthAnchor.constraint(equalToConstant: theme.detailIconSize).setTo(&reservedImageWidth),
+                reservedImageGuide.widthAnchor.constraint(equalToConstant: theme.detailIconSize).setTo(&reservedImageWidthConstraint),
                 label.topAnchor.constraint(equalTo: topAnchor),
                 label.leadingAnchor.constraint(equalTo: reservedImageGuide.trailingAnchor).setTo(&spacingConstraint),
                 label.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -51,9 +51,11 @@ extension OfferingView {
         }
         
         override func contentSizeDidChange() {
-            reservedImageWidth.constant = UIFontMetrics(forTextStyle: theme.detailIconTextStyle).scaledValue(for: theme.detailIconSize, compatibleWith: traitCollection)
+            reservedImageWidthConstraint.constant = UIFontMetrics(forTextStyle: theme.detailIconTextStyle).scaledValue(for: theme.detailIconSize, compatibleWith: traitCollection)
             spacingConstraint.constant = UIFontMetrics(forTextStyle: theme.detailIconTextStyle).scaledValue(for: theme.detailIconSpacing, compatibleWith: traitCollection)
         }
+        
+        // MARK: Reload
         
         func reload(icon: UIImage, text: String) {
             imageView.image = icon

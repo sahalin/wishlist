@@ -8,15 +8,11 @@
 import UIKit
 
 class OfferingView: WLView {
-    var offering: Offering! {
-        didSet {
-            reload()
-        }
-    }
-    
     private let stackView = UIStackView()
     private let contentStackView = UIStackView()
     
+    /// Is needed to avoid variable image sizes messing with the stack view.
+    private let imageViewContainer = UIView()
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
     private let wishListButton = UIButton()
@@ -25,18 +21,22 @@ class OfferingView: WLView {
     private lazy var priceLabel = IconLabel(theme: theme)
     private lazy var starsLabel = IconLabel(theme: theme)
     
+    private var wishListButtonActionHandler: ((UIButton) -> ())?
+    
     private let theme = Theme()
     
-    convenience init(offering: Offering) {
+    convenience init(offering: Offering, networkManager: NetworkManager) {
         self.init()
         
-        self.offering = offering
+        reload(offering: offering, networkManager: networkManager)
     }
     
     override func configure() {
         // Layout
         addSubview(stackView)
         addSubview(contentStackView)
+        imageViewContainer.addSubview(imageView)
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -48,6 +48,8 @@ class OfferingView: WLView {
             // To prevent conflicts with cell's `UIView-Encapsulated-Layout-Height` and hide debugger complains
             heightAnchor.constraint(greaterThanOrEqualToConstant: theme.imageMinHeight).priority(.defaultHigh)
         ])
+        
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         contentStackView.axis = .vertical
         contentStackView.spacing = theme.contentSpacing
@@ -62,32 +64,41 @@ class OfferingView: WLView {
         
         stackView.axis = .horizontal
         stackView.alignment = .top
-        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(imageViewContainer)
         stackView.addArrangedSubview(contentStackView)
         
-        imageView.widthAnchor.constraint(equalToConstant: theme.imageWidth).isActive = true
-        imageView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+        imageViewContainer.widthAnchor.constraint(equalToConstant: theme.imageWidth).isActive = true
+        imageViewContainer.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         
         // Configure subviews
-        imageView.backgroundColor = .systemFill
+        imageViewContainer.backgroundColor = .systemFill
+        imageViewContainer.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
         titleLabel.numberOfLines = 0
         titleLabel.adjustsFontForContentSizeCategory = true
         
-        var buttonConfig: UIButton.Configuration = .gray()
-        buttonConfig.cornerStyle = .capsule
-        buttonConfig.buttonSize = .medium
-        buttonConfig.imagePadding = theme.wishListButtonIconSpacing
-        buttonConfig.image = theme.wishListButtonIcon
-        buttonConfig.title = Strings.addToWishList
-        wishListButton.configuration = buttonConfig
+        wishListButton.configurationUpdateHandler = { [unowned self] button in
+            var config: UIButton.Configuration = .gray()
+            config.cornerStyle = .capsule
+            config.buttonSize = .medium
+            config.imagePadding = theme.wishListButtonIconSpacing
+            config.image = theme.addToWishListButtonIcon
+            config.title = Strings.addToWishList
+            if button.isSelected {
+                config.image = theme.addedTowishListButtonIcon
+                config.title = Strings.addedToWishList
+            }
+            button.configuration = config
+        }
         wishListButton.tintColor = .systemPink
+        wishListButton.addAction(UIAction() { [unowned self] action in
+            wishListButtonActionHandler?(action.sender as! UIButton)
+        }, for: .touchUpInside)
     }
     
     // MARK: Reload
     
-    func reload() {
-        guard let offering = offering else { assertionFailure(); return }
-        
+    func reload(offering: Offering, networkManager: NetworkManager, didTapWishListButton: ((UIButton) -> ())? = nil) {
         // Title
         titleLabel.attributedText = offering.name.attributed(with: theme.titleAttributes)
         
@@ -117,5 +128,16 @@ class OfferingView: WLView {
         
         // Price
         priceLabel.reload(icon: theme.priceIcon, text: offering.formattedPrice)
+        
+        // Image
+        Task { [weak self] in
+            do {
+                self?.imageView.image = try await networkManager.loadImage(at: offering.imageURL)
+            } catch {
+                assertionFailure()
+            }
+        }
+        
+        wishListButtonActionHandler = didTapWishListButton
     }
 }

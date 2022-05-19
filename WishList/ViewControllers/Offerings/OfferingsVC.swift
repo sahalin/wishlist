@@ -130,9 +130,11 @@ extension OfferingsVC: UICollectionViewDelegate {
     // MARK: Cells
     
     func configureOfferingCell() -> UICollectionView.CellRegistration<WLCustomViewListCell<OfferingView>, Offering> {
-        UICollectionView.CellRegistration<WLCustomViewListCell<OfferingView>, Offering> { (cell, indexPath, offering) in
-            cell.setCustomView({ .init(offering: offering) })
-            cell.customView.offering = offering
+        UICollectionView.CellRegistration<WLCustomViewListCell<OfferingView>, Offering> { [unowned self] (cell, indexPath, offering) in
+            cell.setCustomView({ OfferingView() })
+            cell.customView.reload(offering: offering, networkManager: env.networkManager, didTapWishListButton: { button in
+                button.isSelected.toggle()
+            })
         }
     }
     

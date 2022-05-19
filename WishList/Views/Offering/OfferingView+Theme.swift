@@ -35,7 +35,8 @@ extension OfferingView {
         var priceIcon: UIImage = .systemSFSymbol("creditcard.circle.fill", hierarchicalColor: Colors.tint)
         var starsIcon: UIImage = .systemSFSymbol("star.circle.fill", color: .systemYellow)
         
-        var wishListButtonIcon: UIImage = .systemSFSymbol("heart")
+        var addToWishListButtonIcon: UIImage = .systemSFSymbol("heart")
+        var addedTowishListButtonIcon: UIImage = .systemSFSymbol("heart.fill")
         var wishListButtonIconSpacing: Double = 4
     }
 }
