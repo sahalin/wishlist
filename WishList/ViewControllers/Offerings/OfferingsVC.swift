@@ -52,9 +52,19 @@ class OfferingsVC: WLViewController {
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addAction(UIAction() { [unowned self] action in
+            let control = action.sender as? UIRefreshControl
+            reload() {
+                control?.endRefreshing()
+            }
+        }, for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+        
         reload()
         
         NotificationCenter.default.addObserver(self, selector: #selector(storeDidSave), name: .StoreDidSave, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 }
 
@@ -96,18 +106,24 @@ extension OfferingsVC {
 // MARK: - Reload
 
 extension OfferingsVC {
-    func reload() {
+    func reload(completion: (() -> ())? = nil) {
         Task(priority: .userInitiated) {
-            let reloadSnapshot = try! await loadData()
-            await dataSource.apply(reloadSnapshot, animatingDifferences: true)
-            
-            // Reconfigure visible cells on reload.
-            // Data source diff is based on Offering, which does not include whether it was added to the wish list or not.
-            // So when reloading after removing an item from the wish list, cells will not reconfigure and wish list button will remain selected.
-            var reconfigureSnapshot = dataSource.snapshot()
-            let visibleOfferings = collectionView.indexPathsForVisibleItems.compactMap({ dataSource.itemIdentifier(for: $0) })
-            reconfigureSnapshot.reconfigureItems(visibleOfferings)
-            await dataSource.apply(reconfigureSnapshot, animatingDifferences: true)
+            do {
+                let reloadSnapshot = try await loadData()
+                await dataSource.apply(reloadSnapshot, animatingDifferences: true)
+                
+                // Reconfigure visible cells on reload.
+                // Data source diff is based on Offering, which does not include whether it was added to the wish list or not.
+                // So when reloading after removing an item from the wish list, cells will not reconfigure and wish list button will remain selected.
+                var reconfigureSnapshot = dataSource.snapshot()
+                let visibleOfferings = collectionView.indexPathsForVisibleItems.compactMap({ dataSource.itemIdentifier(for: $0) })
+                reconfigureSnapshot.reconfigureItems(visibleOfferings)
+                await dataSource.apply(reconfigureSnapshot, animatingDifferences: true)
+            } catch {
+                // FIXME: Add user-facing error alert
+                assertionFailure()
+            }
+            completion?()
         }
     }
 }
@@ -186,6 +202,10 @@ extension OfferingsVC: UICollectionViewDelegate {
 
 @objc extension OfferingsVC {
     func storeDidSave() {
+        reload()
+    }
+    
+    func applicationWillEnterForeground() {
         reload()
     }
 }

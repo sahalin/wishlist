@@ -112,6 +112,14 @@
 			path = SampleData;
 			sourceTree = "<group>";
 		};
+		119E15C228364B2B0034C904 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				11A1CAAB2833C0900087C43B /* Strings.swift */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
 		11A1CA702833B2470087C43B = {
 			isa = PBXGroup;
 			children = (
@@ -143,7 +151,6 @@
 				11A1CA7E2833B2470087C43B /* SceneDelegate.swift */,
 				11A1CAA32833B83E0087C43B /* Colors.swift */,
 				11A1CAA52833B8420087C43B /* Theme.swift */,
-				11A1CAAB2833C0900087C43B /* Strings.swift */,
 				11A1CA852833B2480087C43B /* Assets.xcassets */,
 				11A1CA872833B2480087C43B /* LaunchScreen.storyboard */,
 				11A1CA8A2833B2480087C43B /* Info.plist */,
@@ -163,6 +170,7 @@
 		11A1CA942833B3B10087C43B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				119E15C228364B2B0034C904 /* Strings */,
 				119E15BD283553F40034C904 /* SampleData */,
 			);
 			path = Resources;
@@ -182,13 +190,13 @@
 			children = (
 				119E15AB283506600034C904 /* NSAttributedString+Additions.swift */,
 				11A1CAC52834FD120087C43B /* NSLayoutConstraint+Additions.swift */,
+				119E15BE2835F45F0034C904 /* RuntimeError.swift */,
 				119E15B528353F3E0034C904 /* UIButton+Additions.swift */,
 				11A1CAC12834E99F0087C43B /* UIFont+Additions.swift */,
 				11A1CAAD2833C10A0087C43B /* UIImage+Additions.swift */,
 				11A1CABF2834C4D80087C43B /* WLCustomViewListCell.swift */,
 				11A1CABD2834BE600087C43B /* WLView.swift */,
 				11A1CAA92833BCD10087C43B /* WLViewController.swift */,
-				119E15BE2835F45F0034C904 /* RuntimeError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";

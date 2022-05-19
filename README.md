@@ -17,6 +17,7 @@ To comply with "don't over-engineer!" part of the assignment 😅 In a real proj
 
 All data is fetched with the `NetworkManager`, and wish list entries are persisted locally in the `Store`. 
 
-### Known issues
+## Known issues
 
-* UILayer's `adjustsFontForContentSizeCategory` is bugged
+* UILayer's `adjustsFontForContentSizeCategory` is bugged (works correctly for visible cells, but has old sizes for reused cells)
+* "Position and size are ambiguous" issues when debugging view hierarchy (may be an Apple bug as there are no complaints in debugger and all views behave as expected)
