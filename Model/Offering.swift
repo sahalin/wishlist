@@ -14,7 +14,7 @@ struct Offering: Hashable {
     }
     
     var type: `Type`
-    var id: String
+    private var id: String
     var name: String
     var imageURL: URL
     var priceCurrencyCode: String
@@ -27,6 +27,11 @@ struct Offering: Hashable {
     var location: String?
     var startDate: Date?
     var endDate: Date?
+    
+    /// Venues and exhibitions can have the same `id`, so can't use it for UI / storage. Use this isntead.
+    var uniqueID: String {
+        "\(type.rawValue)-\(id)"
+    }
 }
 
 

@@ -139,6 +139,7 @@ class OfferingView: WLView {
             }
         }
         
+        // Button
         wishListButton.isSelected = inWishList
         didTapWishListButtonHandler = didTapWishListButton
     }

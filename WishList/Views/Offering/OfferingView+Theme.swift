@@ -16,7 +16,7 @@ extension OfferingView {
         var contentSpacing: Double = 8
         
         var titleAttributes: TextAttributes = [
-            .font: UIFont.preferredFont(forTextStyle: .headline, weight: .medium),
+            .font: UIFont.preferredFont(forTextStyle: .headline),
             .foregroundColor: Colors.text
         ]
         
