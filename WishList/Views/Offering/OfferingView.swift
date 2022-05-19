@@ -8,6 +8,8 @@
 import UIKit
 
 class OfferingView: WLView {
+    private let networkManager: NetworkManager
+    
     private let stackView = UIStackView()
     private let contentStackView = UIStackView()
     
@@ -21,14 +23,13 @@ class OfferingView: WLView {
     private lazy var priceLabel = IconLabel(theme: theme)
     private lazy var starsLabel = IconLabel(theme: theme)
     
-    private var wishListButtonActionHandler: ((UIButton) -> ())?
-    
     private let theme = Theme()
     
-    convenience init(offering: Offering, inWishList: Bool, networkManager: NetworkManager) {
-        self.init()
-        
-        reload(offering: offering, inWishList: inWishList, networkManager: networkManager)
+    private var didTapWishListButtonHandler: ((UIButton) -> ())?
+    
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+        super.init()
     }
     
     override func configure() {
@@ -92,13 +93,13 @@ class OfferingView: WLView {
         }
         wishListButton.tintColor = .systemPink
         wishListButton.addAction(UIAction() { [unowned self] action in
-            wishListButtonActionHandler?(action.sender as! UIButton)
+            didTapWishListButtonHandler?(action.sender as! UIButton)
         }, for: .touchUpInside)
     }
     
     // MARK: Reload
     
-    func reload(offering: Offering, inWishList: Bool, networkManager: NetworkManager, didTapWishListButton: ((UIButton) -> ())? = nil) {
+    func reload(offering: Offering, inWishList: Bool, didTapWishListButton: @escaping (UIButton) -> ()) {
         // Title
         titleLabel.attributedText = offering.name.attributed(with: theme.titleAttributes)
         
@@ -139,6 +140,6 @@ class OfferingView: WLView {
         }
         
         wishListButton.isSelected = inWishList
-        wishListButtonActionHandler = didTapWishListButton
+        didTapWishListButtonHandler = didTapWishListButton
     }
 }
