@@ -9,11 +9,13 @@ import UIKit
 
 extension OfferingView {
     struct Theme {
-        var imageWidth: Double = 100
-        var imageMinHeight: Double = 100
+        var corners: CGFloat = 16
         
-        var contentMargins: NSDirectionalEdgeInsets = .init(top: 8, leading: 8, bottom: 8, trailing: 0)
-        var contentSpacing: Double = 8
+        var imageWidth: CGFloat = 100
+        var imageMinHeight: CGFloat = 100
+        
+        var contentMargins: NSDirectionalEdgeInsets = .init(top: 12, leading: 8, bottom: 12, trailing: 12)
+        var contentSpacing: CGFloat = 8
         
         var titleAttributes: TextAttributes = [
             .font: UIFont.preferredFont(forTextStyle: .headline),
@@ -25,8 +27,8 @@ extension OfferingView {
             .foregroundColor: Colors.text
         ]
         
-        var detailIconSize: Double = 24
-        var detailIconSpacing: Double = 6
+        var detailIconSize: CGFloat = 24
+        var detailIconSpacing: CGFloat = 6
         var detailIconTextStyle: UIFont.TextStyle = .subheadline
         var detailIconScale: UIImage.SymbolScale = .medium
         
@@ -37,6 +39,6 @@ extension OfferingView {
         
         var addToWishListButtonIcon: UIImage = .systemSFSymbol("heart")
         var addedTowishListButtonIcon: UIImage = .systemSFSymbol("heart.fill")
-        var wishListButtonIconSpacing: Double = 4
+        var wishListButtonIconSpacing: CGFloat = 4
     }
 }

@@ -48,6 +48,7 @@ class OfferingsVC: WLViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.frame = view.bounds
         
+        // Configure subviews
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         
@@ -116,8 +117,12 @@ extension OfferingsVC: UICollectionViewDelegate {
         let layout = UICollectionViewCompositionalLayout { (section, env) in
             var config = UICollectionLayoutListConfiguration(appearance: .plain)
             config.headerMode = .none
+            config.showsSeparators = false
+            config.backgroundColor = Colors.groupedBackground
             
-            return NSCollectionLayoutSection.list(using: config, layoutEnvironment: env)
+            let section = NSCollectionLayoutSection.list(using: config, layoutEnvironment: env)
+            section.interGroupSpacing = .cardsSpacing()
+            return section
         }
         return layout
     }
@@ -161,6 +166,8 @@ extension OfferingsVC: UICollectionViewDelegate {
                     break
                 }
             })
+            
+            cell.backgroundConfiguration = .clear()
         }
     }
     

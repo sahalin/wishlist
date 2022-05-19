@@ -16,6 +16,15 @@ extension TextAttributes {
 }
 
 
+// MARK: Values
+
+extension CGFloat {
+    static func cardsSpacing() -> Double {
+        16
+    }
+}
+
+
 // MARK: Tab bar
 
 extension UIImage {

@@ -72,6 +72,10 @@ class OfferingView: WLView {
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         // Configure subviews
+        backgroundColor = Colors.groupedBackground2
+        layer.cornerCurve = .continuous
+        layer.cornerRadius = theme.corners
+        layer.masksToBounds = true
         imageViewContainer.backgroundColor = .systemFill
         imageViewContainer.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill

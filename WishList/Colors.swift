@@ -26,5 +26,5 @@ struct Colors {
     
     static var background: UIColor { .systemBackground }
     static var groupedBackground: UIColor { .systemGroupedBackground }
-    static var groupedBackground2: UIColor { .secondarySystemBackground }
+    static var groupedBackground2: UIColor { .secondarySystemGroupedBackground }
 }
