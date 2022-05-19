@@ -25,3 +25,5 @@ Things I'd do differently in a real-life project:
 * When using `UIRefreshControl` for pull to refresh, navigation bar's title sometimes goes over content
 
 ## Demo
+
+https://user-images.githubusercontent.com/3962114/169287845-c3c06df0-082c-4c5c-bbd3-da18807fff89.mp4
