@@ -66,7 +66,7 @@ class OfferingView: WLView {
             imageViewContainer.heightAnchor.constraint(equalTo: heightAnchor),
             
             // To prevent conflicts with cell's `UIView-Encapsulated-Layout-Height` and hide debugger complains
-            heightAnchor.constraint(greaterThanOrEqualToConstant: theme.imageMinHeight).priority(.defaultHigh),
+            heightAnchor.constraint(greaterThanOrEqualToConstant: theme.imageMinHeight),
         ])
         
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

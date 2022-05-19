@@ -31,7 +31,7 @@ final class WLCustomViewListCell<View: UIView>: UICollectionViewListCell {
             NSLayoutConstraint.activate([
                 customView.topAnchor.constraint(equalTo: contentView.topAnchor),
                 customView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-                customView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+                customView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).priority(.defaultHigh),
                 customView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             ])
         }

@@ -101,6 +101,9 @@ extension OfferingsVC {
             let reloadSnapshot = try! await loadData()
             await dataSource.apply(reloadSnapshot, animatingDifferences: true)
             
+            // Reconfigure visible cells on reload.
+            // Data source diff is based on Offering, which does not include whether it was added to the wish list or not.
+            // So when reloading after removing an item from the wish list, cells will not reconfigure and wish list button will remain selected.
             var reconfigureSnapshot = dataSource.snapshot()
             let visibleOfferings = collectionView.indexPathsForVisibleItems.compactMap({ dataSource.itemIdentifier(for: $0) })
             reconfigureSnapshot.reconfigureItems(visibleOfferings)
