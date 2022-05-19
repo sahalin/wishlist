@@ -81,7 +81,7 @@ extension OfferingsVC {
             
         case .wishList:
             let groupedOfferings = Dictionary(grouping: offerings, by: { $0.uniqueID })
-            offerings = env.store.wishlist.compactMap({ groupedOfferings[$0]?.first })
+            offerings = env.store.wishList.compactMap({ groupedOfferings[$0]?.first })
         }
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, Offering>()
@@ -143,12 +143,12 @@ extension OfferingsVC: UICollectionViewDelegate {
                 OfferingView(networkManager: env.networkManager)
             }
             
-            cell.customView.reload(offering: offering, inWishList: env.store.wishlist.contains(offering.uniqueID), didTapWishListButton: { [unowned self] button in
+            cell.customView.reload(offering: offering, inWishList: env.store.wishList.contains(offering.uniqueID), didTapWishListButton: { [unowned self] button in
                 if !button.isSelected {
-                    env.store.wishlist.insert(offering.uniqueID, at: 0)
+                    env.store.wishList.insert(offering.uniqueID, at: 0)
                 } else {
-                    if let idx = env.store.wishlist.firstIndex(of: offering.uniqueID) {
-                        env.store.wishlist.remove(at: idx)
+                    if let idx = env.store.wishList.firstIndex(of: offering.uniqueID) {
+                        env.store.wishList.remove(at: idx)
                     }
                 }
                 env.store.saveChanges()

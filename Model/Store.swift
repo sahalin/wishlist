@@ -8,10 +8,24 @@
 import Foundation
 
 class Store {
-    var wishlist: [String] = []
+    /// An array of Offering uniqueIDs.
+    lazy var wishList: [String] = {
+        if let data = try? Data(contentsOf: wishListLocalURL) {
+            return try! JSONDecoder().decode([String].self, from: data)
+        }
+        return []
+    }()
     
     func saveChanges() {
+        let data = try! JSONEncoder().encode(wishList)
+        try! data.write(to: wishListLocalURL, options: [.atomic])
+        
         NotificationCenter.default.post(name: .StoreDidSave, object: self)
+    }
+    
+    private var wishListLocalURL: URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
+            .appendingPathComponent("WishList")
     }
 }
 
