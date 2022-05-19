@@ -25,10 +25,10 @@ class OfferingView: WLView {
     
     private let theme = Theme()
     
-    convenience init(offering: Offering, networkManager: NetworkManager) {
+    convenience init(offering: Offering, inWishList: Bool, networkManager: NetworkManager) {
         self.init()
         
-        reload(offering: offering, networkManager: networkManager)
+        reload(offering: offering, inWishList: inWishList, networkManager: networkManager)
     }
     
     override func configure() {
@@ -98,7 +98,7 @@ class OfferingView: WLView {
     
     // MARK: Reload
     
-    func reload(offering: Offering, networkManager: NetworkManager, didTapWishListButton: ((UIButton) -> ())? = nil) {
+    func reload(offering: Offering, inWishList: Bool, networkManager: NetworkManager, didTapWishListButton: ((UIButton) -> ())? = nil) {
         // Title
         titleLabel.attributedText = offering.name.attributed(with: theme.titleAttributes)
         
@@ -138,6 +138,7 @@ class OfferingView: WLView {
             }
         }
         
+        wishListButton.isSelected = inWishList
         wishListButtonActionHandler = didTapWishListButton
     }
 }

@@ -52,11 +52,13 @@ class OfferingsVC: WLViewController {
         collectionView.delegate = self
         
         reload()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(storeDidSave), name: .StoreDidSave, object: nil)
     }
 }
 
 
-// MARK: - Data
+// MARK: - Model
 
 extension OfferingsVC {
     enum Section: String {
@@ -78,7 +80,8 @@ extension OfferingsVC {
                 .sorted(by: { $0.startDate! < $1.startDate! })
             
         case .wishList:
-            offerings = []
+            let groupedOfferings = Dictionary(grouping: offerings, by: { $0.id })
+            offerings = env.store.wishlist.compactMap({ groupedOfferings[$0]?.first })
         }
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, Offering>()
@@ -94,8 +97,13 @@ extension OfferingsVC {
 extension OfferingsVC {
     func reload() {
         Task(priority: .userInitiated) {
-            let snapshot = try! await loadData()
-            await dataSource.apply(snapshot, animatingDifferences: true)
+            let reloadSnapshot = try! await loadData()
+            await dataSource.apply(reloadSnapshot, animatingDifferences: true)
+            
+            var reconfigureSnapshot = dataSource.snapshot()
+            let visibleOfferings = collectionView.indexPathsForVisibleItems.compactMap({ dataSource.itemIdentifier(for: $0) })
+            reconfigureSnapshot.reconfigureItems(visibleOfferings)
+            await dataSource.apply(reconfigureSnapshot, animatingDifferences: true)
         }
     }
 }
@@ -132,8 +140,23 @@ extension OfferingsVC: UICollectionViewDelegate {
     func configureOfferingCell() -> UICollectionView.CellRegistration<WLCustomViewListCell<OfferingView>, Offering> {
         UICollectionView.CellRegistration<WLCustomViewListCell<OfferingView>, Offering> { [unowned self] (cell, indexPath, offering) in
             cell.setCustomView({ OfferingView() })
-            cell.customView.reload(offering: offering, networkManager: env.networkManager, didTapWishListButton: { button in
-                button.isSelected.toggle()
+            cell.customView.reload(offering: offering, inWishList: env.store.wishlist.contains(offering.id), networkManager: env.networkManager, didTapWishListButton: { [unowned self] button in
+                if !button.isSelected {
+                    env.store.wishlist.insert(offering.id, at: 0)
+                } else {
+                    if let idx = env.store.wishlist.firstIndex(of: offering.id) {
+                        env.store.wishlist.remove(at: idx)
+                    }
+                }
+                env.store.saveChanges()
+                
+                switch config {
+                case .venues, .exhibitions:
+                    button.isSelected.toggle()
+                case .wishList:
+                    // Prevent button state changes during disappear animation as offering will disappear on any button tap
+                    break
+                }
             })
         }
     }
@@ -142,5 +165,14 @@ extension OfferingsVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         false
+    }
+}
+
+
+// MARK: - Notifications
+
+@objc extension OfferingsVC {
+    func storeDidSave() {
+        reload()
     }
 }
