@@ -22,7 +22,7 @@ Things I'd do differently in a real-life project:
 
 ## Known issues
 
-* UILayer's `adjustsFontForContentSizeCategory` is bugged (works correctly for visible cells, but has old sizes for reused cells)
+* `UILayer`'s `adjustsFontForContentSizeCategory` is bugged (works correctly for visible cells, but has old sizes for reused cells)
 * "Position and size are ambiguous" issues when debugging view hierarchy (maybe an Apple bug as there are no complaints in debugger and all views behave as expected)
 * When using `UIRefreshControl` for pull to refresh, navigation bar's title sometimes goes over content
 

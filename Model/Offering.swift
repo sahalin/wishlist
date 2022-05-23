@@ -28,7 +28,7 @@ struct Offering: Hashable {
     var startDate: Date?
     var endDate: Date?
     
-    /// Venues and exhibitions can have the same `id`, so can't use it for UI / storage. Use this isntead.
+    /// Venues and exhibitions can have the same `id`, so can't use it for UI / storage. Use this instead.
     var uniqueID: String {
         "\(type.rawValue)-\(id)"
     }
